@@ -4,6 +4,7 @@ from typing import List
 # 你可以按任意顺序返回答案。
 
 class Solution:
+    # 哈希法，空间占用高，时间复杂度O(n)
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         # 创建一个字典 存储{num: index}
         d = {}
@@ -16,6 +17,18 @@ class Solution:
             d[num] = i
         return [-1,-1]
 
+
+    # 暴力解法
+    def twoSum2(self, nums: List[int], target: int) -> List[int]:
+        for i,num in enumerate(nums):
+            if i == len(nums)-1:
+                return []
+            for j, num2 in enumerate(nums[i+1:]):
+                j = i + 1 + j
+                if num + num2 == target:
+                    return [i,j]
+
+
 if __name__ == '__main__':
     solution = Solution()
-    print(solution.twoSum(nums = [2,7,11,15], target = 9))
+    print(solution.twoSum2(nums = [2,7,11,15], target = 9))
